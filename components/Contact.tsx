@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { Container } from "./Container";
 import { SectionLabel } from "./SectionLabel";
+import { StatusDot } from "./StatusDot";
 import { intents } from "@/content/contact";
 import { site } from "@/content/site";
 
@@ -26,16 +27,20 @@ export function Contact() {
       className="border-t border-hairline py-24 sm:py-32"
     >
       <Container>
-        <SectionLabel index="07">Contact</SectionLabel>
+        <SectionLabel index="06">Contact</SectionLabel>
         <h2
           id="contact-heading"
           className="mt-10 max-w-4xl font-display text-[clamp(2.25rem,6vw,5rem)] font-medium leading-[0.98] tracking-[-0.02em] text-balance"
         >
           Tell me what you&rsquo;re building.
         </h2>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
-          Pick a starting point — I&rsquo;ll pre-fill an email so you can skip
-          the blank-page problem. I usually reply within a day or two.
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted">
+          Pick a starting point and the email writes itself — ready to send, no
+          blanks to fill in.
+        </p>
+        <p className="mt-4 flex items-center gap-2.5 font-mono text-xs text-ink-muted">
+          <StatusDot tone="cobalt" label="Currently available" />
+          {site.availability} · {site.replyPromise}
         </p>
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
@@ -78,7 +83,7 @@ export function Contact() {
 
             <div className="mt-8 rounded-lg border border-hairline bg-paper-raised p-6">
               <p className="font-mono text-xs uppercase tracking-[0.14em] text-ink-muted">
-                Preview · subject
+                Ready to send
               </p>
               <p className="mt-2 font-medium text-ink">{activeIntent.subject}</p>
               <p className="mt-4 whitespace-pre-line font-mono text-sm leading-relaxed text-ink-muted">
@@ -90,7 +95,7 @@ export function Contact() {
               href={mailto}
               className="group mt-8 inline-flex min-h-[44px] items-center gap-3 rounded-full bg-ink px-6 py-3 text-base font-medium text-paper transition-colors hover:bg-cobalt focus-visible:bg-cobalt"
             >
-              Write the email
+              Send it
               <span
                 aria-hidden="true"
                 className="transition-transform group-hover:translate-x-1"

@@ -1,10 +1,17 @@
 # Faizan Ejaz — Portfolio
 
 A single-page editorial portfolio for **Mirza Faizan Ejaz** ("Faizan Ejaz") — a
-senior frontend engineer and design-systems specialist who thinks like a
-founder. The site itself is meant to be the proof of the craft: an editorial
-"paper & ink" design, a signature scroll-driven timeline, and zero-fluff copy in
-his own voice.
+senior frontend engineer and AI-native product builder. The site itself is meant
+to be the proof of the craft: an editorial "paper & ink" design, a signature
+scroll-driven timeline, and zero-fluff copy in his own voice.
+
+## Copy principle
+
+The page is written to be **scanned, not read**. Headlines carry the whole
+argument; body copy is optional detail. One claim ("AI that feels like part of
+the product") is made once, in the hero, and everything after it is evidence
+rather than restatement. Total body prose is ~600 words — deliberately budgeted,
+since a visitor decides whether to make contact in well under a minute.
 
 ## Stack
 
@@ -53,7 +60,14 @@ app/
   robots.ts / sitemap.ts
 components/              one file per section + shared primitives
 content/                typed data: eras, brands, graveyard, capabilities, contact, site
+public/
+  faizan-portrait.jpg   hero portrait (optimised; faizan.png is the original)
 ```
+
+Sections run Hero → Thesis (01) → Brands (02) → Eras (03) → Capabilities (04) →
+Graveyard (05) → Contact (06). Conversion cues: an availability pill and reply
+promise in the hero, a mid-page CTA after Capabilities, and contact emails that
+are prefilled complete and sendable — never blanks for the visitor to fill in.
 
 ## Run it
 
@@ -77,19 +91,11 @@ values are **placeholders you should confirm or swap** (all live in
   a real Cal.com/Calendly).
 - **Site URL** — `https://faizanejaz.com` (used for canonical/OG/sitemap; update
   to the real domain).
+- **Availability** — `availability` / `replyPromise` are shown publicly in the
+  hero and contact section. Keep them honest, or remove them.
 - Socials are real: [GitHub](https://github.com/mirzafaizan),
   [LinkedIn](https://linkedin.com/in/mirzafaizanejaz),
   [Twitter/X](https://twitter.com/mirzafaizanejaz).
 
 No metrics, testimonials, or client product details are fabricated — most client
 work is under NDA, so the story and the site are the proof.
-
-## Publish to GitHub
-
-This repo has no remote yet. To publish:
-
-```bash
-# create an empty repo on GitHub first (no README), then:
-git remote add origin https://github.com/mirzafaizan/portfolio-faizan.git
-git push -u origin main
-```

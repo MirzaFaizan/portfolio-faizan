@@ -43,6 +43,27 @@ export function Capabilities() {
             </Reveal>
           ))}
         </div>
+
+        {/* Mid-page exit — catches the visitor who is already convinced. */}
+        <Reveal delay={120}>
+          <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <p className="font-display text-xl font-medium tracking-tight text-ink">
+              Sound like what you need?
+            </p>
+            <a
+              href="#contact"
+              className="group inline-flex min-h-[44px] items-center gap-2.5 font-mono text-sm text-cobalt-ink underline decoration-hairline decoration-1 underline-offset-4 transition-colors hover:decoration-cobalt"
+            >
+              Start a conversation
+              <span
+                aria-hidden="true"
+                className="transition-transform group-hover:translate-x-1"
+              >
+                &rarr;
+              </span>
+            </a>
+          </div>
+        </Reveal>
       </Container>
     </section>
   );

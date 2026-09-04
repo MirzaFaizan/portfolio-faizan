@@ -15,4 +15,4 @@ export const brands: Brand[] = [
 ];
 
 export const brandsCaveat =
-  "The Klarna, Spotify, Bosch, and Hypertext work was delivered through the VNTRS studio. Most engagements are under NDA, so I can talk about how I work — not client specifics.";
+  "Klarna, Spotify, Bosch, and Hypertext via the VNTRS studio. Most of it is under NDA.";

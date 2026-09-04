@@ -51,21 +51,21 @@ export default function Image() {
               marginBottom: 24,
             }}
           >
-            Senior frontend engineer who thinks like a founder.
+            {site.positioning}
           </div>
           <div
             style={{
               display: "flex",
               flexWrap: "wrap",
-              fontSize: 96,
+              fontSize: 92,
               fontWeight: 600,
               lineHeight: 1.02,
               letterSpacing: -3,
               color: INK,
-              maxWidth: 980,
+              maxWidth: 1000,
             }}
           >
-            I build compassionate products people actually use.
+            I make AI feel like part of the product.
           </div>
         </div>
 
@@ -83,7 +83,9 @@ export default function Image() {
           <div
             style={{ width: 14, height: 14, borderRadius: 14, background: COBALT }}
           />
-          <span>Still not giving up.</span>
+          <span>
+            {site.availability} · 12 years · 7 countries · 2 startups of my own
+          </span>
         </div>
       </div>
     ),

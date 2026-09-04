@@ -4,7 +4,6 @@ import { Brands } from "@/components/Brands";
 import { Eras } from "@/components/Eras";
 import { Capabilities } from "@/components/Capabilities";
 import { Graveyard } from "@/components/Graveyard";
-import { WhyMe } from "@/components/WhyMe";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
@@ -18,7 +17,6 @@ export default function Home() {
         <Eras />
         <Capabilities />
         <Graveyard />
-        <WhyMe />
         <Contact />
       </main>
       <Footer />

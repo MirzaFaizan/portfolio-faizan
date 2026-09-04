@@ -88,9 +88,8 @@ export function Eras() {
         >
           Twelve years, seven countries, one stubborn idea.
         </h2>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
-          Most of the work is under NDA — so instead of screenshots, here&rsquo;s
-          how I got here and how it taught me to think. That&rsquo;s the part
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted">
+          Most of it is under NDA. So here&rsquo;s how I got here — the part
           that transfers.
         </p>
 
@@ -174,13 +173,9 @@ export function Eras() {
                   <h3 className="mt-4 max-w-2xl font-display text-2xl font-medium leading-[1.15] tracking-[-0.01em] text-ink sm:text-[1.75rem]">
                     {era.title}
                   </h3>
-                  <div className="mt-4 max-w-2xl space-y-4">
-                    {era.body.map((para, p) => (
-                      <p key={p} className="text-base leading-relaxed text-ink-muted sm:text-lg">
-                        {para}
-                      </p>
-                    ))}
-                  </div>
+                  <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg">
+                    {era.line}
+                  </p>
                 </li>
               );
             })}

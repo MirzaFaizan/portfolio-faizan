@@ -1,6 +1,7 @@
 import { Container } from "./Container";
 import { Reveal } from "./Reveal";
 import { SectionLabel } from "./SectionLabel";
+import { site } from "@/content/site";
 
 export function Thesis() {
   return (
@@ -15,24 +16,32 @@ export function Thesis() {
         <Reveal delay={80}>
           <h2
             id="thesis-heading"
-            className="mt-10 max-w-4xl font-display text-[clamp(1.75rem,4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.01em] text-balance"
+            className="mt-10 max-w-3xl font-display text-[clamp(1.75rem,4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.01em] text-balance"
           >
-            I build{" "}
-            <span className="text-cobalt">compassionate products</span> people
-            actually use — including AI that feels like part of the app, not a
-            demo taped on the side.
+            The best interface disappears.{" "}
+            <span className="text-cobalt">So does the best AI.</span>
           </h2>
         </Reveal>
         <Reveal delay={140}>
-          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-muted">
-            The best interface is invisible: it gets out of the way and lets
-            people do the thing they came to do. That includes orchestrating AI
-            workflows and integrating models so the intelligence disappears into
-            the experience. I&rsquo;ve chased that standard across Estonia,
-            Sweden, England, Finland, Germany, Spain, and Portugal — through two
-            startups of my own, and more late-night deploys than I can count —
-            and I&rsquo;m still chasing it.
+          <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-muted">
+            I build compassionate products — the kind that respect a
+            person&rsquo;s time, attention, and trust.
           </p>
+        </Reveal>
+
+        <Reveal delay={200}>
+          <ul className="mt-14 flex flex-wrap items-center gap-x-3 gap-y-3 border-t border-hairline pt-8 font-mono text-xs uppercase tracking-[0.14em] text-ink-muted">
+            {site.countries.map((country, i) => (
+              <li key={country} className="flex items-center gap-3">
+                {i > 0 ? (
+                  <span aria-hidden="true" className="text-hairline">
+                    /
+                  </span>
+                ) : null}
+                {country}
+              </li>
+            ))}
+          </ul>
         </Reveal>
       </Container>
     </section>
