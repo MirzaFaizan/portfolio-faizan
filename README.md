@@ -80,6 +80,12 @@ npm run lint     # eslint
 
 Requires Node 20+ (developed on Node 22).
 
+## Deploys
+
+Netlify, from `main`, via `netlify.toml`. Publish directory must be `.next` for
+`@netlify/plugin-nextjs` — pointing it anywhere else fails the build with
+"publish directory does not contain expected Next.js build output".
+
 ## Content is placeholder — confirm before publishing
 
 The copy is written from public/known facts and Faizan's own framing, but a few
@@ -89,8 +95,10 @@ values are **placeholders you should confirm or swap** (all live in
 - **Email** — `mirzafaizanejaz@gmail.com` (canonical placeholder).
 - **Calendar link** — `https://cal.com/mirzafaizanejaz` (placeholder; point it at
   a real Cal.com/Calendly).
-- **Site URL** — `https://faizanejaz.com` (used for canonical/OG/sitemap; update
-  to the real domain).
+- **Site URL** — resolved at build time, no longer hardcoded. Netlify's `URL`
+  env var wins, so canonical/OG/sitemap/JSON-LD follow a custom domain the
+  moment one is attached. Falls back to `https://mirzafaizan.netlify.app`
+  locally; override with `NEXT_PUBLIC_SITE_URL` if needed.
 - **Availability** — `availability` / `replyPromise` are shown publicly in the
   hero and contact section. Keep them honest, or remove them.
 - Socials are real: [GitHub](https://github.com/mirzafaizan),

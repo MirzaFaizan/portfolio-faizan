@@ -1,3 +1,14 @@
+/**
+ * Drives canonical, OG image, sitemap, robots, and JSON-LD URLs — so it has to
+ * be the real origin, not a guess. Netlify injects `URL` as the site's primary
+ * URL at build time, which follows a custom domain automatically once attached.
+ */
+const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.URL ??
+  "https://mirzafaizan.netlify.app"
+).replace(/\/$/, "");
+
 export const site = {
   name: "Faizan Ejaz",
   fullName: "Mirza Faizan Ejaz",
@@ -39,7 +50,7 @@ export const site = {
   email: "mirzafaizanejaz@gmail.com",
   // Placeholder scheduling link — replace with a real Cal.com / Calendly URL.
   calendarUrl: "https://cal.com/mirzafaizanejaz",
-  url: "https://faizanejaz.com",
+  url: SITE_URL,
   socials: {
     github: "https://github.com/mirzafaizan",
     linkedin: "https://linkedin.com/in/mirzafaizanejaz",
