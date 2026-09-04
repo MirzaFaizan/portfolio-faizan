@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Faizan Ejaz — Portfolio
 
-## Getting Started
+A single-page editorial portfolio for **Mirza Faizan Ejaz** ("Faizan Ejaz") — a
+senior frontend engineer and design-systems specialist who thinks like a
+founder. The site itself is meant to be the proof of the craft: an editorial
+"paper & ink" design, a signature scroll-driven timeline, and zero-fluff copy in
+his own voice.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 16** (App Router) + **TypeScript**
+- **Tailwind CSS v4** (CSS-first `@theme` tokens)
+- **next/font/google** — Fraunces (display), Inter (body), JetBrains Mono (mono)
+- **next/og** — dynamically generated Open Graph image, favicon, robots & sitemap
+- No animation libraries. Motion is a tiny `IntersectionObserver` + a scroll
+  handler, both gated behind `prefers-reduced-motion` and progressive
+  enhancement (the site is fully readable with JavaScript disabled).
+
+## Design system
+
+Defined as CSS variables + Tailwind theme tokens in `app/globals.css`:
+
+| Token       | Value     | Use                              |
+| ----------- | --------- | -------------------------------- |
+| `paper`     | `#F5F1E8` | warm off-white background        |
+| `ink`       | `#141312` | primary text                     |
+| `ink-muted` | `#5C574E` | secondary text (AA on paper)     |
+| `hairline`  | `#DED7C7` | borders / rules                  |
+| `cobalt`    | `#2A2AE0` | primary accent (a nod to `#00f`) |
+| `amber`     | `#D98A00` | small status dots only           |
+
+Light-first by design (deliberately not a dark-mode dev cliché).
+
+## Signature interaction
+
+The **"long game" timeline spine** in the eras section (`components/Eras.tsx`):
+a vertical line that draws itself as you scroll, plus a persistent mono
+**coordinate readout** (`Faisalabad · 2014` → `Tallinn · 2018` →
+`Stockholm · 2021` → `Valencia · 2025`) that updates with the active era.
+Desktop shows a sticky "you are here" readout; mobile shows a sticky top
+coordinate bar. All of it is disabled under `prefers-reduced-motion`, where the
+per-era static labels carry the same information.
+
+## Project structure
+
+```
+app/
+  layout.tsx            fonts + metadata + skip link
+  page.tsx              composes the homepage sections
+  globals.css           design tokens + base styles + reveal/reduced-motion
+  opengraph-image.tsx   generated OG image
+  icon.tsx              generated favicon
+  robots.ts / sitemap.ts
+components/              one file per section + shared primitives
+content/                typed data: eras, brands, graveyard, capabilities, contact, site
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Run it
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run lint     # eslint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Requires Node 20+ (developed on Node 22).
 
-## Learn More
+## Content is placeholder — confirm before publishing
 
-To learn more about Next.js, take a look at the following resources:
+The copy is written from public/known facts and Faizan's own framing, but a few
+values are **placeholders you should confirm or swap** (all live in
+`content/site.ts`):
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Email** — `mirzafaizanejaz@gmail.com` (canonical placeholder).
+- **Calendar link** — `https://cal.com/mirzafaizanejaz` (placeholder; point it at
+  a real Cal.com/Calendly).
+- **Site URL** — `https://faizanejaz.com` (used for canonical/OG/sitemap; update
+  to the real domain).
+- Socials are real: [GitHub](https://github.com/mirzafaizan),
+  [LinkedIn](https://linkedin.com/in/mirzafaizanejaz),
+  [Twitter/X](https://twitter.com/mirzafaizanejaz).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+No metrics, testimonials, or client product details are fabricated — most client
+work is under NDA, so the story and the site are the proof.
 
-## Deploy on Vercel
+## Publish to GitHub
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This repo has no remote yet. To publish:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# create an empty repo on GitHub first (no README), then:
+git remote add origin https://github.com/mirzafaizan/portfolio-faizan.git
+git push -u origin main
+```
