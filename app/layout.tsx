@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { StructuredData } from "@/components/StructuredData";
 import { site } from "@/content/site";
 
 const fraunces = Fraunces({
@@ -98,6 +99,7 @@ export default function RootLayout({
         />
       </head>
       <body className="paper-grain min-h-full">
+        <StructuredData />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:text-paper"
