@@ -63,7 +63,10 @@ export function Contact() {
                       className={`inline-flex min-h-[44px] cursor-pointer items-center rounded-full border px-5 py-2.5 text-base transition-colors ${
                         isSelected
                           ? "border-cobalt bg-cobalt text-paper"
-                          : "border-hairline bg-paper-raised text-ink hover:border-ink"
+                          : // ink-muted, not hairline: a control's boundary needs
+                            // 3:1 to satisfy WCAG 1.4.11, and hairline on this
+                            // fill measures 1.34:1.
+                            "border-ink-muted bg-paper-raised text-ink hover:border-ink"
                       }`}
                     >
                       <input

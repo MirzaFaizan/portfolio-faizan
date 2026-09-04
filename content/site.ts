@@ -46,6 +46,16 @@ export const site = {
     height: 1200,
     alt: "Faizan Ejaz, photographed outdoors in the snow",
   },
+  /**
+   * The measured WCAG ratio of --paper on --ink, computed from the tokens in
+   * globals.css rather than asserted. The hero chip renders it in exactly those
+   * two colours, so the annotation is a live sample of the number it states.
+   * Recompute if either token moves.
+   */
+  contrast: {
+    ratio: "16.46:1",
+    pair: "paper on ink",
+  },
   // Canonical placeholder — swap for a preferred inbox before publishing.
   email: "mirzafaizanejaz@gmail.com",
   // Placeholder scheduling link — replace with a real Cal.com / Calendly URL.

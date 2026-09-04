@@ -97,9 +97,91 @@
   transform: none;
 }
 
+/* Separators for an inline, wrapping list. They belong on ::after so they sit at
+   line ends, where a wrap absorbs them — put them before the label and a wrapped
+   line starts with a dangling "/ GERMANY". The second content declaration adds
+   empty alt text so screen readers skip them; the first is the fallback for
+   engines without alt-text support. */
+.rule-list > li:not(:last-child)::after {
+  content: "/";
+  content: "/" / "";
+  margin-inline: 0.75rem;
+  color: var(--hairline);
+}
+
+/* Hero load sequence. Four beats only — context, statement, actions, portrait —
+   each animating as one composition rather than per-element. Gated behind .js
+   like .reveal, so a no-JS render paints the finished state. */
+.js .hero-beat {
+  animation: hero-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.js .hero-beat-1 {
+  animation-delay: 0.05s;
+}
+
+.js .hero-beat-2 {
+  animation-delay: 0.15s;
+}
+
+.js .hero-beat-3 {
+  animation-delay: 0.28s;
+}
+
+.js .hero-beat-4 {
+  animation-delay: 0.4s;
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* The accent phrase rests in Fraunces' wonky forms — the WONK and SOFT axes are
+   already loaded in layout.tsx but were pinned off. On load the letterforms
+   morph into them, so the shift reads as deliberate rather than decorative.
+   Unlayered, so it beats the "WONK" 0 that .font-display sets in @layer base. */
+.hero-wonk {
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+}
+
+.js .hero-wonk {
+  animation: hero-wonk 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+@keyframes hero-wonk {
+  from {
+    font-variation-settings: "SOFT" 0, "WONK" 0;
+  }
+  to {
+    font-variation-settings: "SOFT" 30, "WONK" 1;
+  }
+}
+
+/* Sampled from the file itself: the portrait's six dominant buckets are all
+   near-black and its most common one is #141414, within a hair of --ink. So it
+   can dissolve into an ink field instead of sitting inside a border. */
+.hero-portrait-image {
+  -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 68%, transparent 100%);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .js .hero-beat,
+  .js .hero-wonk {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   *,

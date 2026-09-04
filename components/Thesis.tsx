@@ -30,16 +30,9 @@ export function Thesis() {
         </Reveal>
 
         <Reveal delay={200}>
-          <ul className="mt-14 flex flex-wrap items-center gap-x-3 gap-y-3 border-t border-hairline pt-8 font-mono text-xs uppercase tracking-[0.14em] text-ink-muted">
-            {site.countries.map((country, i) => (
-              <li key={country} className="flex items-center gap-3">
-                {i > 0 ? (
-                  <span aria-hidden="true" className="text-hairline">
-                    /
-                  </span>
-                ) : null}
-                {country}
-              </li>
+          <ul className="rule-list mt-14 flex flex-wrap items-center gap-y-3 border-t border-hairline pt-8 font-mono text-xs uppercase tracking-[0.14em] text-ink-muted">
+            {site.countries.map((country) => (
+              <li key={country}>{country}</li>
             ))}
           </ul>
         </Reveal>
