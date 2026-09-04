@@ -5,15 +5,15 @@ import { SectionLabel } from "./SectionLabel";
 const reasons = [
   {
     title: "I think in products, not tickets",
-    body: "Having founded companies and felt the weight of every decision, I ask why before how — and I'll tell you when the smartest move is to build less.",
+    body: "Having founded companies and felt the weight of every decision, I ask why before how — and I'll tell you when the smartest move is to build less, or when AI shouldn't be in the flow at all.",
   },
   {
-    title: "I make teams faster",
-    body: "Design systems, documented patterns, and workshops are my default. I leave a codebase — and a team — in better shape than I found it.",
+    title: "I make AI feel native",
+    body: "I've been integrating models into real products since the early Copilot days — Hugging Face, Microsoft, and custom workflows that feel like part of the app, not a bolt-on demo.",
   },
   {
     title: "I sweat accessibility & craft",
-    body: "Compassionate means everyone: keyboard users, screen readers, slow networks, tired people. The details aren't polish, they're the product.",
+    body: "Compassionate means everyone: keyboard users, screen readers, slow networks, tired people. The details aren't polish, they're the product — AI included.",
   },
 ];
 

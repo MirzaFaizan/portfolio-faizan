@@ -1,10 +1,11 @@
 export const site = {
   name: "Faizan Ejaz",
   fullName: "Mirza Faizan Ejaz",
-  role: "Senior Frontend Engineer & design-systems specialist",
-  positioning: "Senior frontend engineer who thinks like a founder.",
+  role: "Senior Frontend Engineer · AI-native product builder",
+  positioning:
+    "Senior frontend engineer who ships AI that feels native — and thinks like a founder.",
   thesis:
-    "I build compassionate products people actually use — the kind that respect a person's time, attention, and trust.",
+    "I build compassionate products people actually use — including AI that respects a person's time, attention, and trust instead of getting in the way.",
   location: "Valencia, Spain",
   locationYear: "2025",
   // Canonical placeholder — swap for a preferred inbox before publishing.

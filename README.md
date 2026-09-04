@@ -35,7 +35,7 @@ Light-first by design (deliberately not a dark-mode dev cliché).
 
 The **"long game" timeline spine** in the eras section (`components/Eras.tsx`):
 a vertical line that draws itself as you scroll, plus a persistent mono
-**coordinate readout** (`Faisalabad · 2014` → `Tallinn · 2018` →
+**coordinate readout** (`Islamabad · 2014` → `Tallinn · 2018` →
 `Stockholm · 2021` → `Valencia · 2025`) that updates with the active era.
 Desktop shows a sticky "you are here" readout; mobile shows a sticky top
 coordinate bar. All of it is disabled under `prefers-reduced-motion`, where the

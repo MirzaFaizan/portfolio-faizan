@@ -23,7 +23,7 @@ export function Brands() {
         </Reveal>
 
         <Reveal delay={120}>
-          <ul className="mt-14 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
+          <ul className="mt-14 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
             {brands.map((brand) => (
               <li key={brand.name} className="flex flex-col gap-2">
                 <span className="font-display text-2xl font-medium tracking-tight text-ink sm:text-[1.75rem]">

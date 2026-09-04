@@ -19,16 +19,19 @@ export function Thesis() {
           >
             I build{" "}
             <span className="text-cobalt">compassionate products</span> people
-            actually use — software that respects a person&rsquo;s time,
-            attention, and trust.
+            actually use — including AI that feels like part of the app, not a
+            demo taped on the side.
           </h2>
         </Reveal>
         <Reveal delay={140}>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-muted">
-            The best frontend is invisible: it gets out of the way and lets
-            people do the thing they came to do. I&rsquo;ve chased that standard
-            across four countries, two startups of my own, and more late-night
-            deploys than I can count — and I&rsquo;m still chasing it.
+            The best interface is invisible: it gets out of the way and lets
+            people do the thing they came to do. That includes orchestrating AI
+            workflows and integrating models so the intelligence disappears into
+            the experience. I&rsquo;ve chased that standard across Estonia,
+            Sweden, England, Finland, Germany, Spain, and Portugal — through two
+            startups of my own, and more late-night deploys than I can count —
+            and I&rsquo;m still chasing it.
           </p>
         </Reveal>
       </Container>

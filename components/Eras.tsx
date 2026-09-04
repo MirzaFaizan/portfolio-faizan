@@ -86,7 +86,7 @@ export function Eras() {
           id="eras-heading"
           className="mt-10 max-w-4xl font-display text-[clamp(2rem,5vw,4rem)] font-medium leading-[1.02] tracking-[-0.02em] text-balance"
         >
-          Twelve years, four countries, one stubborn idea.
+          Twelve years, seven countries, one stubborn idea.
         </h2>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
           Most of the work is under NDA — so instead of screenshots, here&rsquo;s

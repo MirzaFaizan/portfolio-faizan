@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}`,
   },
   description:
-    "Faizan Ejaz is a senior frontend engineer and design-systems specialist who thinks like a founder. I build compassionate products people actually use.",
+    "Faizan Ejaz is a senior frontend engineer who ships AI that feels native — design systems, product craft, and AI workflows that respect a person's time and trust.",
   applicationName: `${site.name} — Portfolio`,
   authors: [{ name: site.fullName }],
   creator: site.fullName,
@@ -37,11 +37,14 @@ export const metadata: Metadata = {
     "Faizan Ejaz",
     "Mirza Faizan Ejaz",
     "Senior Frontend Engineer",
+    "AI Integration",
+    "AI Workflows",
     "Design Systems",
     "Component Libraries",
     "React",
     "TypeScript",
     "Product Engineer",
+    "Hugging Face",
   ],
   alternates: {
     canonical: "/",
@@ -52,14 +55,14 @@ export const metadata: Metadata = {
     siteName: `${site.name} — Portfolio`,
     title: `${site.name} — ${site.role}`,
     description:
-      "Senior frontend engineer who thinks like a founder. Building compassionate products people actually use.",
+      "Senior frontend engineer who ships AI that feels native — and thinks like a founder.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} — ${site.role}`,
     description:
-      "Senior frontend engineer who thinks like a founder. Building compassionate products people actually use.",
+      "Senior frontend engineer who ships AI that feels native — and thinks like a founder.",
     creator: "@mirzafaizanejaz",
   },
   robots: {
