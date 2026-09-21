@@ -2,8 +2,8 @@
 
 A single-page editorial portfolio for **Mirza Faizan Ejaz** ("Faizan Ejaz") — a
 senior frontend engineer and AI-native product builder. The site itself is meant
-to be the proof of the craft: an editorial "paper & ink" design, a signature
-scroll-driven timeline, and zero-fluff copy in his own voice.
+to be the proof of the craft: an editorial "paper & ink" design and zero-fluff
+copy in his own voice.
 
 ## Copy principle
 
@@ -19,9 +19,9 @@ since a visitor decides whether to make contact in well under a minute.
 - **Tailwind CSS v4** (CSS-first `@theme` tokens)
 - **next/font/google** — Fraunces (display), Inter (body), JetBrains Mono (mono)
 - **next/og** — dynamically generated Open Graph image, favicon, robots & sitemap
-- No animation libraries. Motion is a tiny `IntersectionObserver` + a scroll
-  handler, both gated behind `prefers-reduced-motion` and progressive
-  enhancement (the site is fully readable with JavaScript disabled).
+- No animation libraries. Motion is a tiny `IntersectionObserver` reveal,
+  gated behind `prefers-reduced-motion` and progressive enhancement (the site
+  is fully readable with JavaScript disabled).
 
 ## Design system
 
@@ -38,16 +38,6 @@ Defined as CSS variables + Tailwind theme tokens in `app/globals.css`:
 
 Light-first by design (deliberately not a dark-mode dev cliché).
 
-## Signature interaction
-
-The **"long game" timeline spine** in the eras section (`components/Eras.tsx`):
-a vertical line that draws itself as you scroll, plus a persistent mono
-**coordinate readout** (`Islamabad · 2014` → `Tallinn · 2018` →
-`Stockholm · 2021` → `Valencia · 2025`) that updates with the active era.
-Desktop shows a sticky "you are here" readout; mobile shows a sticky top
-coordinate bar. All of it is disabled under `prefers-reduced-motion`, where the
-per-era static labels carry the same information.
-
 ## Project structure
 
 ```
@@ -59,13 +49,13 @@ app/
   icon.tsx              generated favicon
   robots.ts / sitemap.ts
 components/              one file per section + shared primitives
-content/                typed data: eras, brands, graveyard, capabilities, contact, site
+content/                typed data: brands, graveyard, capabilities, contact, site
 public/
   faizan-portrait.jpg   hero portrait (optimised; faizan.png is the original)
 ```
 
-Sections run Hero → Thesis (01) → Brands (02) → Eras (03) → Capabilities (04) →
-Graveyard (05) → Contact (06). Conversion cues: an availability pill and reply
+Sections run Hero → Thesis (01) → Brands (02) → Capabilities (03) →
+Graveyard (04) → Contact (05). Conversion cues: an availability pill and reply
 promise in the hero, a mid-page CTA after Capabilities, and contact emails that
 are prefilled complete and sendable — never blanks for the visitor to fill in.
 

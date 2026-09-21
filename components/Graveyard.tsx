@@ -20,7 +20,7 @@ export function Graveyard() {
     >
       <Container>
         <Reveal>
-          <SectionLabel index="05">The graveyard</SectionLabel>
+          <SectionLabel index="04">The graveyard</SectionLabel>
         </Reveal>
         <Reveal delay={80}>
           <h2

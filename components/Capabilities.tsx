@@ -11,7 +11,7 @@ export function Capabilities() {
     >
       <Container>
         <Reveal>
-          <SectionLabel index="04">How I work</SectionLabel>
+          <SectionLabel index="03">How I work</SectionLabel>
         </Reveal>
         <Reveal delay={80}>
           <h2
