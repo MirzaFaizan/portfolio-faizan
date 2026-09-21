@@ -7,10 +7,10 @@ import { eras } from "@/content/eras";
 
 export function Eras() {
   const listRef = useRef<HTMLOListElement>(null);
+  const fillRef = useRef<HTMLSpanElement>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
   const [enhanced, setEnhanced] = useState(false);
   const [active, setActive] = useState(0);
-  const [fill, setFill] = useState(0);
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
@@ -20,29 +20,47 @@ export function Eras() {
     if (prefersReduced) return;
 
     let raf = 0;
+    let currentActive = 0;
+    let currentInView = false;
+    let didEnhance = false;
+
     const update = () => {
       raf = 0;
       const list = listRef.current;
       if (!list) return;
 
-      setEnhanced(true);
+      if (!didEnhance) {
+        didEnhance = true;
+        setEnhanced(true);
+      }
 
       const rect = list.getBoundingClientRect();
       const focusLine = window.innerHeight * 0.4;
 
       // Section-in-view (for the floating readout visibility).
-      setInView(rect.top < window.innerHeight * 0.75 && rect.bottom > 120);
+      const nextInView =
+        rect.top < window.innerHeight * 0.75 && rect.bottom > 120;
+      if (nextInView !== currentInView) {
+        currentInView = nextInView;
+        setInView(nextInView);
+      }
 
-      // Spine fill: how far the focus line has travelled through the list.
+      // Spine fill: mutate the DOM directly so scroll frames do not re-render React.
       const progress = (focusLine - rect.top) / rect.height;
-      setFill(Math.max(0, Math.min(1, progress)) * 100);
+      const fillPct = Math.max(0, Math.min(1, progress));
+      if (fillRef.current) {
+        fillRef.current.style.height = `calc((100% - 1.5rem) * ${fillPct})`;
+      }
 
       // Active era: last item whose top has crossed the focus line.
       let next = 0;
       itemRefs.current.forEach((el, i) => {
         if (el && el.getBoundingClientRect().top <= focusLine) next = i;
       });
-      setActive(next);
+      if (next !== currentActive) {
+        currentActive = next;
+        setActive(next);
+      }
     };
 
     const onScroll = () => {
@@ -60,6 +78,7 @@ export function Eras() {
   }, []);
 
   const activeEra = eras[active];
+  const showMobileReadout = enhanced && inView;
 
   return (
     <section
@@ -67,18 +86,19 @@ export function Eras() {
       aria-labelledby="eras-heading"
       className="relative border-t border-hairline py-24 sm:py-32"
     >
-      {/* Mobile sticky coordinate bar */}
-      {enhanced && inView ? (
-        <div
-          aria-hidden="true"
-          className="sticky top-0 z-30 -mx-6 mb-8 flex items-center gap-2 border-b border-hairline bg-paper/90 px-6 py-2.5 backdrop-blur-sm sm:-mx-8 sm:px-8 lg:hidden"
-        >
-          <span className="size-1.5 rounded-full bg-amber" />
-          <span className="font-mono text-xs uppercase tracking-[0.14em] text-ink">
-            {activeEra.coordinate}
-          </span>
-        </div>
-      ) : null}
+      {/* Mobile coordinate bar — fixed (out of flow) so show/hide never shifts layout
+          or fights scroll anchoring. Sticky + conditional mount was the jitter source. */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none fixed inset-x-0 top-0 z-30 flex items-center gap-2 border-b border-hairline bg-paper/90 px-6 py-2.5 backdrop-blur-sm transition-opacity duration-200 sm:px-8 lg:hidden ${
+          showMobileReadout ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <span className="size-1.5 rounded-full bg-amber" />
+        <span className="font-mono text-xs uppercase tracking-[0.14em] text-ink">
+          {activeEra.coordinate}
+        </span>
+      </div>
 
       <Container>
         <SectionLabel index="03">The long game</SectionLabel>
@@ -96,7 +116,7 @@ export function Eras() {
         <div className="mt-16 lg:grid lg:grid-cols-[240px_1fr] lg:gap-16">
           {/* Desktop sticky coordinate readout */}
           <div className="hidden lg:block">
-            <div className="sticky top-24">
+            <div className="sticky top-8">
               {enhanced ? (
                 <div className="flex flex-col gap-3">
                   <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-ink-muted">
@@ -104,10 +124,7 @@ export function Eras() {
                   </span>
                   <div className="flex items-center gap-2.5">
                     <span className="size-2 rounded-full bg-amber" />
-                    <span
-                      key={activeEra.coordinate}
-                      className="font-mono text-sm uppercase tracking-[0.12em] text-ink"
-                    >
+                    <span className="font-mono text-sm uppercase tracking-[0.12em] text-ink">
                       {activeEra.coordinate}
                     </span>
                   </div>
@@ -132,9 +149,10 @@ export function Eras() {
             />
             {/* Spine fill (draws as you scroll) */}
             <span
+              ref={fillRef}
               aria-hidden="true"
               className="absolute left-[5px] top-3 w-px bg-cobalt"
-              style={{ height: `calc((100% - 1.5rem) * ${fill / 100})` }}
+              style={{ height: 0 }}
             />
 
             {eras.map((era, i) => {
@@ -151,9 +169,7 @@ export function Eras() {
                   <span
                     aria-hidden="true"
                     className={`absolute left-0 top-2 size-[11px] rounded-full border-2 bg-paper transition-colors duration-500 ${
-                      isActive
-                        ? "border-cobalt"
-                        : "border-hairline"
+                      isActive ? "border-cobalt" : "border-hairline"
                     }`}
                   />
                   <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
