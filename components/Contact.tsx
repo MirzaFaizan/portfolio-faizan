@@ -27,7 +27,7 @@ export function Contact() {
       className="border-t border-hairline py-24 sm:py-32"
     >
       <Container>
-        <SectionLabel index="06">Contact</SectionLabel>
+        <SectionLabel index="05">Contact</SectionLabel>
         <h2
           id="contact-heading"
           className="mt-10 max-w-4xl font-display text-[clamp(2.25rem,6vw,5rem)] font-medium leading-[0.98] tracking-[-0.02em] text-balance"
